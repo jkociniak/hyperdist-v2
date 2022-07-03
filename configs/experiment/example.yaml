@@ -4,8 +4,8 @@
 # python train.py experiment=example
 
 defaults:
-  - override /datamodule: mnist.yaml
-  - override /model: mnist.yaml
+  - override /datamodule: hyperdist.yaml
+  - override /model: eucl_default.yaml
   - override /callbacks: default.yaml
   - override /logger: null
   - override /trainer: default.yaml
@@ -34,5 +34,5 @@ datamodule:
   batch_size: 64
 
 logger:
-  wandb:
+  neptune:
     tags: ["mnist", "${name}"]

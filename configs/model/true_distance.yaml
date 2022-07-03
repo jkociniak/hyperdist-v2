@@ -1,0 +1,16 @@
+_target_: src.models.hyperdist_module.HYPERDISTLitModule
+
+optimizer_name: None
+optimizer_hparams: None
+roptimizer_name: None
+roptimizer_hparams: None
+scheduler_name: None
+scheduler_hparams: None
+rscheduler_name: None
+rscheduler_hparams: None
+
+net:
+  _target_: src.models.components.mixed_model.TrueModel
+  hnn_ball:
+    _target_: geoopt.PoincareBall()
+    c: ${k}

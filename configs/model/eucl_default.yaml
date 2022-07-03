@@ -1,0 +1,23 @@
+_target_: src.models.hyperdist_module.HYPERDISTLitModule
+
+optimizer_name: SGD
+optimizer_hparams:
+  lr: 0.001
+  momentum: 0.9
+
+roptimizer_name: RiemannianSGD
+roptimizer_hparams:
+  lr: 0.001
+
+scheduler_name: None
+scheduler_hparams: None
+
+rscheduler_name: None
+rscheduler_hparams: None
+
+net:
+  _target_: src.models.components.euclidean_mlp.DoubleInputEuclideanMLP
+  in_features: ???,
+  hidden_features: [320, 320, 320, 320, 320],
+  out_features: 1,
+  bias: True

@@ -3,10 +3,10 @@
 # specify here default training configuration
 defaults:
   - _self_
-  - datamodule: mnist.yaml
-  - model: mnist.yaml
+  - datamodule: hyperdist.yaml
+  - model: eucl_default.yaml
   - callbacks: default.yaml
-  - logger: null # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
+  - logger: many_loggers.yaml # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
   - trainer: default.yaml
   - log_dir: default.yaml
 
@@ -27,6 +27,12 @@ defaults:
   # enable color logging
   - override hydra/hydra_logging: colorlog
   - override hydra/job_logging: colorlog
+
+
+# set dimension of problem
+dim: 2
+model.input_dim: ${.dim}
+datamodule.dim: ${.dim}
 
 # path to original working directory
 # hydra hijacks working directory by changing it to the new log directory
